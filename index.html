@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f3eb">
+  <meta name="description" content="Small thoughts for a bigger world. A swipeable demo of 200 original reflections inspired by September 27, 2026 reporting.">
+  <title>thoughts — a little room to think</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#feed" aria-label="Thoughts home"><span class="brand-mark">t<span class="brand-dot">.</span></span><span class="brand-name">thoughts</span></a>
+      <div class="sidebar-intro"><span class="kicker light">A SPACE BETWEEN HEADLINES</span><h1>Pause.<br>Notice.<br><em>Think.</em></h1><p>Little thoughts about a very big world.</p></div>
+      <nav class="side-nav" aria-label="Pages">
+        <button class="nav-item active" data-view="feed"><span class="nav-icon" data-icon="spark"></span><span>For you</span><span class="nav-arrow">↗</span></button>
+        <button class="nav-item" data-view="saved"><span class="nav-icon" data-icon="bookmark"></span><span>Saved thoughts</span><span id="side-saved-count" class="nav-count">0</span></button>
+        <button class="nav-item" data-view="collections"><span class="nav-icon" data-icon="layers"></span><span>Collections</span><span class="nav-arrow">↗</span></button>
+      </nav>
+      <div class="sidebar-foot"><div class="little-star">✳</div><p>A demo edition<br><strong>27 September 2026</strong></p><small>200 thoughts · 25 stories</small></div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand">thoughts<span>.</span></div>
+        <div class="edition"><span class="edition-pulse"></span><span>THE FIRST EDITION</span><span class="edition-line"></span><span>SEPT 27, 2026</span></div>
+        <button id="profile-button" class="profile-button" aria-label="Open profile"><span id="profile-initial">?</span><span id="profile-name">Join thoughts</span><span class="chevron">⌄</span></button>
+      </header>
+
+      <main id="main-content">
+        <section id="feed-view" class="view active" aria-label="Thought feed">
+          <div class="page-heading"><div><span class="kicker">A MOMENT FOR CURIOSITY</span><h2>What’s on your <em>mind?</em></h2><p>Real-world sparks. Thoughts worth sitting with.</p></div><div class="edition-number">ISSUE <span>001</span></div></div>
+          <div class="topic-row"><div id="topic-chips" class="topic-chips" aria-label="Filter thoughts by topic"></div><span id="feed-count" class="feed-count"></span></div>
+          <div class="feed-stage">
+            <button id="prev-button" class="stage-arrow stage-arrow-left" aria-label="Previous thought">←</button>
+            <div id="card-swipe-area" class="card-swipe-area">
+              <article id="thought-card" class="thought-card" aria-live="polite"></article>
+            </div>
+            <button id="next-button" class="stage-arrow stage-arrow-right" aria-label="Next thought">→</button>
+          </div>
+          <div class="feed-under"><span>← PREVIOUS</span><div class="progress-wrap"><div id="progress-bar" class="progress-bar"></div></div><span>NEXT →</span></div>
+          <p class="swipe-tip">Swipe the card or use your arrow keys to keep thinking <span>↗</span></p>
+        </section>
+
+        <section id="saved-view" class="view" aria-label="Saved thoughts">
+          <div class="page-heading"><div><span class="kicker">YOUR LITTLE LIBRARY</span><h2>Worth <em>keeping.</em></h2><p>The thoughts you tucked away for later.</p></div><div class="edition-number">SAVED <span id="saved-total">0</span></div></div>
+          <div id="saved-content" class="library-content"></div>
+        </section>
+
+        <section id="collections-view" class="view" aria-label="Thought collections">
+          <div class="page-heading"><div><span class="kicker">MAKE CONNECTIONS</span><h2>Your <em>collections.</em></h2><p>Gather thoughts that belong together.</p></div><button id="new-collection-button" class="primary-button">+ New collection</button></div>
+          <div id="collections-content" class="library-content"></div>
+        </section>
+      </main>
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <button class="mobile-nav-item active" data-view="feed"><span data-icon="spark"></span><small>For you</small></button>
+        <button class="mobile-nav-item" data-view="saved"><span data-icon="bookmark"></span><small>Saved</small></button>
+        <button class="mobile-nav-item" data-view="collections"><span data-icon="layers"></span><small>Collections</small></button>
+      </nav>
+    </div>
+  </div>
+
+  <div id="modal-backdrop" class="modal-backdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button id="modal-close" class="modal-close" aria-label="Close dialog">×</button><div id="modal-content"></div></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Local browser-test artifacts and runtime files
+work/
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

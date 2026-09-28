@@ -1,6 +1,8 @@
 # thoughts — demo
 
-A mobile-first, swipeable prototype with 200 original thoughts inspired by reporting published or updated on September 27, 2026 (US Eastern time). Each thought links to the reporting that sparked it. The thoughts are reflections, not summaries or verified news claims.
+A mobile-first, swipeable prototype with 280 original thoughts inspired by reporting published or updated on September 27 and September 28, 2026 (US Eastern time). Each thought links to the reporting that sparked it. The thoughts are reflections, not summaries or verified news claims.
+
+The Sep 27 edition holds 200 thoughts across 25 stories. The Sep 28 edition adds 80 thoughts across 10 stories, including current events and pop culture.
 
 ## Run
 
@@ -15,7 +17,7 @@ Open <http://127.0.0.1:4173> in a browser. Use a narrow browser window to see th
 
 ## What works
 
-- Topic filters and a 200-thought feed
+- Topic filters and a 280-thought feed
 - Likes and saves
 - Collections, including adding and removing thoughts
 - Multiple local demo profiles
@@ -24,4 +26,4 @@ Open <http://127.0.0.1:4173> in a browser. Use a narrow browser window to see th
 
 Profiles are **local to one browser**. They do not have passwords, email delivery, or a shared backend. This is intentional for a prototype; production accounts will need authentication, a database, privacy controls, and an automated editorial pipeline.
 
-The edition is a dated snapshot. No daily or hourly ingestion job runs in this demo.
+The editions are dated snapshots. No daily or hourly ingestion job runs in this demo.

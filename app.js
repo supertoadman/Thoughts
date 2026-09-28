@@ -237,4 +237,4 @@ swipeArea.addEventListener('pointerup', event => {
 swipeArea.addEventListener('pointercancel', () => { pointerStart = null; });
 
 // The source groups are checked at startup so later edits cannot silently change the demo count.
-if (THOUGHTS.length !== 200 || STORY_GROUPS.length !== 25) console.warn(`Expected 200 thoughts across 25 stories; found ${THOUGHTS.length} and ${STORY_GROUPS.length}.`);
+if (THOUGHTS.length !== 280 || STORY_GROUPS.length !== 35) console.warn(`Expected 280 thoughts across 35 stories; found ${THOUGHTS.length} and ${STORY_GROUPS.length}.`);

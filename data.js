@@ -1,4 +1,4 @@
-// Original demo copy written for Thoughts on September 27, 2026.
+// Original demo copy written for Thoughts on September 27, 2026, with a Sep 28 edition appended.
 // Each group links to the reporting that inspired its eight reflections.
 export const STORY_GROUPS = [
   {
@@ -400,7 +400,178 @@ export const STORY_GROUPS = [
       'A team can borrow confidence from someone who has just finished their round.',
       'The best part of a comeback may be discovering that no one gave up.'
     ]
+  },
+  {
+    id: 'swift-vmas', topic: 'Culture', label: 'Music',
+    story: 'Taylor Swift premieres Patient Zero at the VMAs',
+    source: 'Variety',
+    url: 'https://variety.com/2026/music/news/taylor-swift-vmas-patient-zero-music-video-premiere-1236876944/',
+    published: '2026-09-28',
+    thoughts: [
+      'A music video can borrow the patience and scale of a film in just a few minutes.',
+      'I wonder how it feels to watch your own story turn into someone else’s warning.',
+      'Directing your own work is another way of saying the picture in your head mattered.',
+      'An award for direction reminds me that pop is also craft, not only spectacle.',
+      'I wonder what fans notice first: the cameos, the twist, or the feeling it leaves.',
+      'A premiere is a public moment built from months of private decisions.',
+      'Becoming the most-awarded artist still seems to leave room for gratitude toward someone else.',
+      'I wonder how many quiet collaborations sit behind a single glamorous reveal.'
+    ]
+  },
+  {
+    id: 'madonna-vmas', topic: 'Culture', label: 'Music',
+    story: 'Madonna wins Artist of the Year at the MTV VMAs',
+    source: 'CBS News',
+    url: 'https://www.cbsnews.com/news/2026-vmas-highlights-madonna-taylor-swift/',
+    published: '2026-09-28',
+    thoughts: [
+      'Returning to a familiar awards stage after two decades can make time feel strangely negotiable.',
+      'I wonder whether longevity in music is mostly talent, stubbornness, or both.',
+      'A night of awards can also be a night of introductions across generations.',
+      'I find it moving when an artist still seems curious about the next performance.',
+      'Sharing a stage with younger artists can look like mentorship without saying the word.',
+      'I wonder how an artist decides which version of themselves to bring back.',
+      'Pop history is not only nostalgia; sometimes it is still rewriting the present.',
+      'A joke in an acceptance speech can hide how carefully someone prepared to be there.'
+    ]
+  },
+  {
+    id: 'endgame-box', topic: 'Culture', label: 'Film',
+    story: 'Avengers: Endgame Encore returns to the top of the box office',
+    source: 'Variety',
+    url: 'https://variety.com/2026/film/box-office/avengers-endgame-encore-box-office-win-primetime-scores-big-opening-weekend-1236876819/',
+    published: '2026-09-28',
+    thoughts: [
+      'A familiar movie can still fill a theater when people want to feel it together again.',
+      'I wonder what we are really buying when we buy a ticket to something we already own at home.',
+      'A re-release can be marketing and also a reunion with an earlier version of ourselves.',
+      'New films opening beside an old favorite make an opening weekend feel like a conversation.',
+      'I wonder whether shared silence in a dark room still matters more than a perfect screen at home.',
+      'Box office numbers are a crowd’s opinion written in seats filled.',
+      'A story we already know can still surprise us when the room reacts as one.',
+      'I wonder how many people came for nostalgia and left thinking about the next chapter.'
+    ]
+  },
+  {
+    id: 'rod-stewart', topic: 'Culture', label: 'Music',
+    story: 'Rod Stewart announces his final tour for 2027',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/music/2026/sep/28/rod-stewart-announces-final-tour-for-2027-most-definitely-my-last',
+    published: '2026-09-28',
+    thoughts: [
+      'Saying goodbye to the road is different from saying goodbye to the songs.',
+      'I wonder how a performer knows when the last encore should actually be last.',
+      'Six decades of touring is a map of rooms that briefly became home.',
+      'A farewell tour asks audiences to celebrate and to prepare for absence at once.',
+      'I wonder what an artist keeps when the suitcases finally stay shut.',
+      'Gratitude from a stage can feel larger when someone no longer needs to prove anything.',
+      'A long career asks a lot of a voice, and knowing when to rest it is its own kind of wisdom.',
+      'I hope the last shows leave room for joy, not only for goodbye.'
+    ]
+  },
+  {
+    id: 'suri-game', topic: 'Culture', label: 'Gaming',
+    story: 'Suri: The Seventh Note is announced for PlayStation 5',
+    source: 'PlayStation Blog',
+    url: 'https://blog.playstation.com/2026/09/28/suri-the-seventh-note-launches-oct-30-on-ps5/',
+    published: '2026-09-28',
+    thoughts: [
+      'A game built around music makes me notice how rhythm shapes attention.',
+      'I wonder how many milliseconds of timing separate frustration from flow.',
+      'Culture can travel through a controller as clearly as through a concert hall.',
+      'Recording real instruments for a digital world feels like a quiet act of care.',
+      'I wonder whether exploring a fantasy island can also be a way of visiting somewhere real.',
+      'Gameplay constraints can force a kind of creativity that pure freedom might miss.',
+      'A debut after years of work carries a particular kind of nervous hope.',
+      'I like when a game asks me to listen as carefully as I move.'
+    ]
+  },
+  {
+    id: 'gates-ai', topic: 'Tech', label: 'AI',
+    story: 'Bill Gates joins calls for stronger AI safeguards',
+    source: 'Reuters',
+    url: 'https://www.reuters.com/legal/litigation/bill-gates-joins-calls-ai-safeguards-including-legislation-2026-09-27/',
+    published: '2026-09-28',
+    thoughts: [
+      'Self-regulation sounds reassuring until the stakes grow larger than any one company.',
+      'I wonder how lawmakers keep pace with tools that change before a bill is finished.',
+      'A dinner meeting can matter, and so can the laws that outlast any dinner.',
+      'Warnings about powerful technology are easier to dismiss when the benefits feel immediate.',
+      'I wonder who the public trusts more: the builders of a system or the people asked to govern it.',
+      'Speed and safety keep being presented as opposites when they might need each other.',
+      'An expert asking for rules is still making a claim about what kind of future is worth having.',
+      'I hope the debate stays about concrete safeguards, not only about who sounds more confident.'
+    ]
+  },
+  {
+    id: 'nfl-drones', topic: 'Tech', label: 'Security',
+    story: 'An NFL team deploys drone defense at its stadium',
+    source: 'CNBC',
+    url: 'https://www.cnbc.com/2026/09/27/nfl-drone-defense-tech-game-disruptions.html',
+    published: '2026-09-28',
+    thoughts: [
+      'A stadium used to worry about weather more than about the sky itself.',
+      'I wonder how many ordinary gadgets become security problems simply by getting cheaper.',
+      'Entertainment venues now need defenses that once belonged only to airports.',
+      'A game pause caused by a drone reminds me how fragile a shared public moment can be.',
+      'I wonder whether fans will notice the systems meant to keep them from noticing anything.',
+      'Technology that lands a drone safely is a different kind of spectacle from taking it down hard.',
+      'Crowds gather for joy, and someone still has to plan for interruption.',
+      'The air above a stadium is public, contested, and suddenly very carefully watched.'
+    ]
+  },
+  {
+    id: 'us-china-tariffs', topic: 'World', label: 'Trade',
+    story: 'The US and China cut tariffs on a slice of each other’s goods',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/business/2026/sep/28/china-and-us-cut-reciprocal-tariffs',
+    published: '2026-09-28',
+    thoughts: [
+      'A tariff list can make global politics feel strangely domestic, down to toasters and bed linen.',
+      'I wonder how much trust is rebuilt by small agreements when the big ones stay unfinished.',
+      'Trade wars often sound abstract until they touch the price of ordinary things.',
+      'Leaving strategic goods off a deal can be caution, leverage, or both.',
+      'I wonder whether stability is something countries announce or something people slowly feel.',
+      'A modest step can still matter when the alternative was more escalation.',
+      'Diplomacy sometimes looks like paperwork about fish hooks and garden umbrellas.',
+      'Two economies can ease a pressure point without pretending the whole relationship is healed.'
+    ]
+  },
+  {
+    id: 'ukraine-strikes', topic: 'World', label: 'Conflict',
+    story: 'Fresh strikes across Ukraine kill eight as Zelenskyy condemns the attacks',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/world/2026/sep/28/ukraine-war-briefing-zelenskyy-moscow-terrorising-kyiv-latest-strikes',
+    published: '2026-09-28',
+    thoughts: [
+      'A briefing can list deaths in numbers that never feel like numbers to the people named.',
+      'I wonder how civilians keep rebuilding routines when the sky itself is uncertain.',
+      'Hitting communications infrastructure makes ordinary connection feel newly precious.',
+      'Calls for diplomacy sound different on a morning after another night of rubble.',
+      'I wonder which forms of pressure actually shorten a war rather than prolong the talking about it.',
+      'A market, a school, and a home are not abstract targets when you have shopped or slept there.',
+      'Distance makes it easier to treat violence as a story instead of a neighbor’s morning.',
+      'I hope attention lasts longer than the news cycle that carries each new strike.'
+    ]
+  },
+  {
+    id: 'greece-germany', topic: 'Sports', label: 'Football',
+    story: 'Greece stuns Jürgen Klopp’s Germany in the Nations League',
+    source: 'The Guardian',
+    url: 'https://www.theguardian.com/football/2026/sep/27/nations-league-germany-greece-serbia-netherlands-norway-portugal',
+    published: '2026-09-28',
+    thoughts: [
+      'Possession can look like control until a single goal rewrites the afternoon.',
+      'I wonder how a debut home match feels when the result refuses to cooperate.',
+      'A historic first win against a familiar opponent can make patience look like a strategy.',
+      'Calling a loss “information” is a useful habit and a hard one to keep.',
+      'I wonder what players hear from a new coach after the crowd has gone quiet.',
+      'Football keeps reminding me that dominance and scoring are not the same skill.',
+      'An underdog goal needs only a gap, not permission from the possession chart.',
+      'A bad result early in a tenure can still become the lesson a team needed.'
+    ]
   }
+
 ];
 
 export const THOUGHTS = Array.from({ length: 8 }, (_, turn) =>
@@ -412,6 +583,6 @@ export const THOUGHTS = Array.from({ length: 8 }, (_, turn) =>
     story: group.story,
     source: group.source,
     url: group.url,
-    published: '2026-09-27'
+    published: group.published || '2026-09-27'
   }))
 ).flat();

@@ -1,4 +1,5 @@
-import { THOUGHTS, STORY_GROUPS } from './data.js';
+import { THOUGHTS as BASELINE_THOUGHTS, STORY_GROUPS } from './data.js';
+import { loadActiveBatches } from './batch-loader.js';
 
 const STORAGE_KEY = 'thoughts-demo-v1';
 const TOPICS = ['All', 'World', 'Life', 'Tech', 'Sports', 'Culture'];
@@ -20,9 +21,10 @@ let topic = 'All';
 let feedIndex = 0;
 let activeCollection = null;
 let toastTimeout;
+let thoughts = [...BASELINE_THOUGHTS];
 
 const account = () => db.accounts.find(item => item.id === db.activeId) || null;
-const feed = () => topic === 'All' ? THOUGHTS : THOUGHTS.filter(item => item.topic === topic);
+const feed = () => topic === 'All' ? thoughts : thoughts.filter(item => item.topic === topic);
 const currentThought = () => feed()[feedIndex] || feed()[0];
 const isLiked = (id) => Boolean(account()?.likes.includes(id));
 const isSaved = (id) => Boolean(account()?.saved.includes(id));
@@ -42,10 +44,11 @@ function setView(view) {
 
 function renderProfile() {
   const profile = account();
+  const visibleSavedCount = profile?.saved.filter(id => thoughtById(id)).length ?? 0;
   $('#profile-initial').textContent = profile ? profile.name.trim().charAt(0).toUpperCase() : '?';
   $('#profile-name').textContent = profile ? profile.name.split(' ')[0] : 'Join thoughts';
-  $('#side-saved-count').textContent = profile?.saved.length ?? 0;
-  $('#saved-total').textContent = profile?.saved.length ?? 0;
+  $('#side-saved-count').textContent = visibleSavedCount;
+  $('#saved-total').textContent = visibleSavedCount;
 }
 
 function renderChips() {
@@ -63,6 +66,8 @@ function renderCard() {
     <div class="card-main"><div class="quote-mark" aria-hidden="true">“</div><p class="thought-text">${escapeHtml(item.text)}</p></div>
     <div class="card-bottom"><a class="story-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(item.story)}">↗ &nbsp; Sparked by: ${escapeHtml(item.story)}</a><div class="card-actions"><button class="round-action ${isLiked(item.id) ? 'active' : ''}" data-action="like" data-id="${item.id}" aria-label="${isLiked(item.id) ? 'Unlike' : 'Like'} this thought" aria-pressed="${isLiked(item.id)}" title="Like">${icons.heart}</button><button class="round-action ${isSaved(item.id) ? 'active' : ''}" data-action="save" data-id="${item.id}" aria-label="${isSaved(item.id) ? 'Unsave' : 'Save'} this thought" aria-pressed="${isSaved(item.id)}" title="Save">${icons.bookmark}</button><button class="round-action" data-action="collect" data-id="${item.id}" aria-label="Add thought to a collection" title="Add to collection">${icons.plus}</button></div></div>`;
   $('#feed-count').textContent = `${total} thoughts in ${topic === 'All' ? 'this edition' : topic}`;
+  $('#edition-total').textContent = thoughts.length;
+  $('#side-feed-count').textContent = `${thoughts.length} thoughts · ${STORY_GROUPS.length} baseline stories`;
   $('#progress-bar').style.width = `${((feedIndex + 1) / total) * 100}%`;
   $('#prev-button').disabled = feedIndex === 0;
   $('#next-button').disabled = feedIndex === total - 1;
@@ -93,7 +98,7 @@ function toggleSave(id) {
   notify(profile.saved.includes(id) ? 'Saved to your thoughts' : 'Removed from saved thoughts');
 }
 
-function thoughtById(id) { return THOUGHTS.find(item => item.id === id); }
+function thoughtById(id) { return thoughts.find(item => item.id === id); }
 function miniCard(item, inCollection = false) {
   return `<article class="mini-card"><div><span class="mini-card-tag">${escapeHtml(item.topic)} / ${escapeHtml(item.label)}</span><p class="mini-card-text">${escapeHtml(item.text)}</p></div><div class="mini-card-bottom"><a class="mini-card-source" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">↗ ${escapeHtml(item.story)}</a><div class="mini-card-actions"><button class="tiny-button" data-action="open-thought" data-id="${item.id}" title="Open thought" aria-label="Open thought">↗</button><button class="tiny-button" data-action="${inCollection ? 'remove-from-collection' : 'save'}" data-id="${item.id}" title="${inCollection ? 'Remove from collection' : 'Remove saved thought'}" aria-label="${inCollection ? 'Remove from collection' : 'Remove saved thought'}">×</button></div></div></article>`;
 }
@@ -118,7 +123,7 @@ function renderCollections() {
     }
   }
   const collections = profile?.collections || [];
-  root.innerHTML = collections.length ? `<div class="library-grid">${collections.map(item => `<button class="collection-card" data-action="open-collection" data-id="${item.id}"><span class="collection-symbol">✺</span><div><div class="collection-title">${escapeHtml(item.name)}</div><div class="collection-count">${item.thoughtIds.length} ${item.thoughtIds.length === 1 ? 'thought' : 'thoughts'}</div></div><span class="collection-arrow">↗</span></button>`).join('')}</div>` : emptyState('✺', 'Make your first collection.', 'Give a few thoughts a place to belong together.', '+ New collection', 'new-collection');
+  root.innerHTML = collections.length ? `<div class="library-grid">${collections.map(item => { const count = item.thoughtIds.filter(id => thoughtById(id)).length; return `<button class="collection-card" data-action="open-collection" data-id="${item.id}"><span class="collection-symbol">✺</span><div><div class="collection-title">${escapeHtml(item.name)}</div><div class="collection-count">${count} ${count === 1 ? 'thought' : 'thoughts'}</div></div><span class="collection-arrow">↗</span></button>`; }).join('')}</div>` : emptyState('✺', 'Make your first collection.', 'Give a few thoughts a place to belong together.', '+ New collection', 'new-collection');
 }
 
 function openModal(html) { $('#modal-content').innerHTML = html; $('#modal-backdrop').hidden = false; setTimeout(() => $('#modal-content input')?.focus(), 0); }
@@ -158,6 +163,24 @@ document.querySelectorAll('[data-icon]').forEach(node => { node.innerHTML = icon
 renderAll();
 setView(['feed', 'saved', 'collections'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'feed');
 
+loadActiveBatches(fetch, new Date(), BASELINE_THOUGHTS.map(item => item.id))
+  .then(({ thoughts: batchThoughts, loadedCount, errors }) => {
+    thoughts = [...batchThoughts, ...BASELINE_THOUGHTS];
+    feedIndex = 0;
+    renderAll();
+    $('#batch-status').textContent = errors.length ? `${errors.length} batch${errors.length === 1 ? '' : 'es'} unavailable` :
+      loadedCount ? `${loadedCount} live batch${loadedCount === 1 ? '' : 'es'}` : 'Baseline edition';
+    $('#batch-alert').hidden = !errors.length;
+    $('#batch-alert').textContent = errors.length ? 'Some new thoughts could not load. The baseline is still available.' : '';
+    if (errors.length) console.warn('Thought batch errors:', errors);
+  })
+  .catch(error => {
+    $('#batch-status').textContent = 'New batches unavailable; showing baseline';
+    $('#batch-alert').hidden = false;
+    $('#batch-alert').textContent = 'New thoughts could not load. The baseline is still available.';
+    console.warn('Could not load thought batches:', error);
+  });
+
 document.addEventListener('click', event => {
   const viewButton = event.target.closest('[data-view]');
   if (viewButton) { setView(viewButton.dataset.view); return; }
@@ -173,7 +196,7 @@ document.addEventListener('click', event => {
   if (action === 'new-collection') openNewCollectionModal();
   if (action === 'back-collections') { activeCollection = null; renderCollections(); }
   if (action === 'open-collection') { activeCollection = id; renderCollections(); }
-  if (action === 'open-thought') { const item = thoughtById(id); topic = 'All'; feedIndex = THOUGHTS.findIndex(entry => entry.id === item.id); renderChips(); renderCard(); setView('feed'); }
+  if (action === 'open-thought') { const item = thoughtById(id); if (!item) return; topic = 'All'; feedIndex = thoughts.findIndex(entry => entry.id === item.id); renderChips(); renderCard(); setView('feed'); }
   if (action === 'remove-from-collection') {
     const collection = account()?.collections.find(item => item.id === activeCollection);
     if (collection) { collection.thoughtIds = collection.thoughtIds.filter(item => item !== id); persist(); renderCollections(); notify('Removed from collection'); }
@@ -237,4 +260,4 @@ swipeArea.addEventListener('pointerup', event => {
 swipeArea.addEventListener('pointercancel', () => { pointerStart = null; });
 
 // The source groups are checked at startup so later edits cannot silently change the demo count.
-if (THOUGHTS.length !== 200 || STORY_GROUPS.length !== 25) console.warn(`Expected 200 thoughts across 25 stories; found ${THOUGHTS.length} and ${STORY_GROUPS.length}.`);
+if (BASELINE_THOUGHTS.length !== 200 || STORY_GROUPS.length !== 25) console.warn(`Expected 200 baseline thoughts across 25 stories; found ${BASELINE_THOUGHTS.length} and ${STORY_GROUPS.length}.`);

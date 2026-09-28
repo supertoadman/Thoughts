@@ -10,13 +10,15 @@ const files = new Map([
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
   ['/app.js', ['app.js', 'text/javascript; charset=utf-8']],
+  ['/batch-loader.js', ['batch-loader.js', 'text/javascript; charset=utf-8']],
   ['/data.js', ['data.js', 'text/javascript; charset=utf-8']],
   ['/favicon.svg', ['favicon.svg', 'image/svg+xml']]
 ]);
 
 http.createServer(async (request, response) => {
   const route = new URL(request.url, `http://${request.headers.host}`).pathname;
-  const file = files.get(route);
+  const file = files.get(route) || (/^\/batches\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/.test(route)
+    ? [route.slice(1), 'application/json; charset=utf-8'] : null);
   if (!file) { response.writeHead(404); response.end('Not found'); return; }
   try {
     const content = await readFile(path.join(root, file[0]));

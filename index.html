@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f3eb">
-  <meta name="description" content="Small thoughts for a bigger world. A swipeable demo of 200 original reflections inspired by September 27, 2026 reporting.">
+  <meta name="description" content="Small thoughts for a bigger world. A swipeable feed of original reflections inspired by current reporting.">
   <title>thoughts — a little room to think</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -19,20 +19,21 @@
         <button class="nav-item" data-view="saved"><span class="nav-icon" data-icon="bookmark"></span><span>Saved thoughts</span><span id="side-saved-count" class="nav-count">0</span></button>
         <button class="nav-item" data-view="collections"><span class="nav-icon" data-icon="layers"></span><span>Collections</span><span class="nav-arrow">↗</span></button>
       </nav>
-      <div class="sidebar-foot"><div class="little-star">✳</div><p>A demo edition<br><strong>27 September 2026</strong></p><small>200 thoughts · 25 stories</small></div>
+      <div class="sidebar-foot"><div class="little-star">✳</div><p>Thoughts to revisit<br><strong id="batch-status">Baseline edition</strong></p><small id="side-feed-count">200 thoughts · 25 baseline stories</small></div>
     </aside>
 
     <div class="main-area">
       <header class="topbar">
         <div class="mobile-brand">thoughts<span>.</span></div>
-        <div class="edition"><span class="edition-pulse"></span><span>THE FIRST EDITION</span><span class="edition-line"></span><span>SEPT 27, 2026</span></div>
+        <div class="edition"><span class="edition-pulse"></span><span>THE THOUGHTS FEED</span><span class="edition-line"></span><span>BASELINE + LIVE BATCHES</span></div>
         <button id="profile-button" class="profile-button" aria-label="Open profile"><span id="profile-initial">?</span><span id="profile-name">Join thoughts</span><span class="chevron">⌄</span></button>
       </header>
 
       <main id="main-content">
         <section id="feed-view" class="view active" aria-label="Thought feed">
-          <div class="page-heading"><div><span class="kicker">A MOMENT FOR CURIOSITY</span><h2>What’s on your <em>mind?</em></h2><p>Real-world sparks. Thoughts worth sitting with.</p></div><div class="edition-number">ISSUE <span>001</span></div></div>
+          <div class="page-heading"><div><span class="kicker">A MOMENT FOR CURIOSITY</span><h2>What’s on your <em>mind?</em></h2><p>Real-world sparks. Thoughts worth sitting with.</p></div><div class="edition-number">THOUGHTS <span id="edition-total">200</span></div></div>
           <div class="topic-row"><div id="topic-chips" class="topic-chips" aria-label="Filter thoughts by topic"></div><span id="feed-count" class="feed-count"></span></div>
+          <p id="batch-alert" class="batch-alert" role="status" hidden></p>
           <div class="feed-stage">
             <button id="prev-button" class="stage-arrow stage-arrow-left" aria-label="Previous thought">←</button>
             <div id="card-swipe-area" class="card-swipe-area">
